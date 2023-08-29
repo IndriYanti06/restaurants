@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+
+    <meta property="og:title" content="Restaurant Listing">
+    <meta property="og:description" content="A list of Restaurants">
+    <meta property="og:image" content="{{ url_for('static', filename='benner.jpg')}}">
+
+    <link rel="shortcut icon" href="{{url_for('static', filename='favion.ico')}}" type="image/x-icon">
+    <link rel="icon" href="{{url_for('static', filename='favion.ico')}}" type="image/x-icon">
+    <title>Restaurant Listing</title>
+
+    <!-- Mapbox library imports -->
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css" rel="stylesheet" />
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js"></script>
+
+    <script src=" https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Bootstrap library -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
+    <!-- fonts link  -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Jua&amp;display=swap" rel="stylesheet">
+
+    <style>
+        .wrap {
+            width: 90%;
+            max-width: 750px;
+            margin: 0 auto;
+        }
+
+        .banner {
+            width: 100%;
+            height: 20vh;
+            background-image: url(../static/banner.jpg);
+            /* background-color: rgba(0, 0, 0, 0.5); */
+            background-position: center;
+            background-size: contain;
+            background-repeat: repeat;
+        }
+
+        h1.title {
+            font-family: "Jua", sans-serif;
+            color: white;
+            font-size: 3rem;
+            text-align: center;
+        }
+
+        h5 {
+            font-family: "Jua", sans-serif;
+        }
+
+
+        .restaurant-list {
+            overflow: scroll;
+            width: 100%;
+            height: calc(20vh - 30px);
+            position: relative;
+        }
+
+        .card-title,
+        .card-subtitle {
+            display: inline;
+        }
+
+        #map {
+            width: 100%;
+            height: 50vh;
+            margin: 20px auto 20px auto;
+        }
+
+        .iw-inner {
+            padding: 10px;
+            font-size: smaller;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="banner">
+            <div class="d-flex flex-column align-items-center"
+                style="background-color: rgba(0,0,0,0.5);width: 100%;height: 100%;">
+                <h1 class="title mt-5 mb-2">Restaurant Map</h1>
+            </div>
+        </div>
+        <div id="map"></div>
+
+        <div class="restaurant-list" id="restaurant-box">
+            <div class="card" id="card-0">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <a href="#" class="restaurant-title">
+                            Best Restaurant
+                        </a>
+                    </h5>
+                    <h6 class="card-subtitle mb-2 text-muted">
+                        Ramen
+                    </h6>
+                    <p class="card-text">Location of restaurant</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="card" style="margin-top: 32px;">
+        <div class="card-body">
+            <div class="mb-3">
+                <label for="input-name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="input-name" placeholder="input restauran name">
+            </div>
+            <div class="mb-3">
+                <label for="input-categories" class="form-label">Categories</label>
+                <input type="text" class="form-control" id="input-categories" placeholder="input restauran categories">
+            </div>
+            <div class="mb-3">
+                <label for="input-location" class="form-label">Location</label>
+                <input type="text" class="form-control" id="input-location" placeholder="input restauran location">
+            </div>
+            <div class="mb-3">
+                <label for="input-longitude" class="form-label">longitude</label>
+                <input type="number" class="form-control" id="input-longitude" placeholder="input restauran longitude">
+            </div>
+            <div class="mb-3">
+                <label for="input-latitude" class="form-label">latitude</label>
+                <input type="number" class="form-control" id="input-latitude" placeholder="input restauran latitude">
+            </div>
+            <button type="button" class="btn btn-outline-info" onclick="create_restaurant()">Create</button>
+        </div>
+    </div>
+
+
+</body>
+<script src="../static/main.js"></script>
+
+</html>
